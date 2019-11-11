@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+}
+#title{
+    border:2px black;
+    background-color: aquamarine;
+}
+.col1{width: 10%}
+.col2{width: 20%}
+.col3{width: 30%}
+.col4{width: 40%}
+.col5{width: 50%}
+.col6{width: 60%}
+.col7{width: 70%}
+.col8{width: 80%}
+.col9{width: 90%}
+.col10{width: 100%}
