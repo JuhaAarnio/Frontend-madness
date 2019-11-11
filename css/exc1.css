@@ -3,7 +3,14 @@
 }
 #title{
     border:2px black;
+    font-size: 72px;
+}
+#banner{
+    width: 1080px;
     background-color: aquamarine;
+    border: 24px aqua;
+    padding: 25px;
+    margin: 25px;
 }
 .col1{width: 10%}
 .col2{width: 20%}
