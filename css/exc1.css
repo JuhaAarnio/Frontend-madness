@@ -22,3 +22,15 @@
 .col8{width: 80%}
 .col9{width: 90%}
 .col10{width: 100%}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+    border: 1px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
