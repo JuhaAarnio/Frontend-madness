@@ -5,14 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Exercise 1</title>
     <link rel="stylesheet" type="text/css" href="../css/exc1.css"/>
+    <script src="../javascript/exc1.js"></script>
 </head>
 <body>
 <p id="title">Exercise 1</p>
 <div class="row">
     <div class="col10"><h1>The banner</h1></div>
 </div>
+<div class="row">
+    <div id="div1" class="col4">
+        <img id="draggable_image" src="../images/joni.jpg"
+             draggable="true" alt="Joni Konnori standing in the rain"
+             width="256" height="128" ondragstart="drag(event)"></div>
+    <div class="col3">
+        <div id="drop_area" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+    <div class="col3">
+        <div id="drop_area2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+</div>
 <img id="panoramic_image" src="../images/banner.jpg" alt="The three horsemen of defeat">
-<img id="draggable_image" src="../images/joni.jpg" draggable="true" alt="Joni Konnori standing in the rain" width="256" height="128">
+
 <p>LOREM IPSUM DOREISTUSLOREM IPSUM DOREISTUSLOREM IPSUM DOREISTUSLOREM
     IPSUM DOREISTUSLOREM
     IPSUM DOREISTUSLOREM IPSUM DOREISTUS</p>
