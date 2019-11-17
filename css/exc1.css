@@ -5,12 +5,29 @@
     border:2px black;
     font-size: 72px;
 }
+@keyframes color_swap {
+    0% {background-color: aqua;}
+    50% {background-color: blue;}
+    100% {background-color: aqua;}
+}
+@keyframes text_hover {
+    from {float: left;}
+    to {float: right;}
+}
 #banner{
     max-width: 1920px;
     background-color: aquamarine;
     border: 24px aqua;
     padding: 25px;
     margin: 25px;
+    animation-name: color_swap;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+#banner_text{
+    animation-name: text_hover;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
 }
 [class*="col-"]{
     width: 100%;
