@@ -5,27 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css" href="../css/exc2.css"/>
     <script src="../javascript/exc2.js"></script>
+    <script src="../javascript/JsBarcode.all.min.js"></script>
     <title>Exercise 2</title>
 </head>
-<>
+<body>
 <div class="row">
-    < class="col10">
+    <div class="col10">
         <form id="barcode_form">
-            Virtual bar code:<br><input type="text">
-            <input type="submit" value="Decode">
+            <p>Virtual Barcode: </p><input id="virtual_barcode" type="text">
+            <input id="decode_button" type="button" value="Decode" onclick="drawBarcode()">
         </form>
         <input id="hide_button" type="submit" value="Hide">
     </div>
 </div>
 
 <div class="row">
-    <div class="col10">
-        <div id="info_area">
-            <h1>Payee's IBAN:</h1>
-            <h1>Amount to be paid:</h1>
-            <h1>Payment reference:</h1>
-            <h1>Due date:</h1>
-        </div>
+    <div id="info_area">
+        <h1>Payee's IBAN:<p id="payee"></p></h1>
+        <h1>Amount to be paid:<p id="amount"></p></h1>
+        <h1>Payment reference:<p id="payment_reference"></p></h1>
+        <h1>Due date:<p id="due_date"></p></h1>
+    </div>
+    <div id="barcode_area">
+        <svg id="barcode"></svg>
+        <script>
+            function drawBarcode() {
+                console.log("Method called");
+                let virtualBarcode = document.getElementById("virtual_barcode").value;
+                JsBarcode("#barcode", virtualBarcode);
+            }
+        </script>
     </div>
 </div>
 </body>
