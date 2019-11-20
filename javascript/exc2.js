@@ -7,10 +7,9 @@ function Decode() {
     let date_area = document.getElementById('due_date');
 
     if (version==="4"){
-        let iban = document.createTextNode(virtualBarcode.substring(2,16));
-        let euros = document.createTextNode(virtualBarcode.substring(17,22));
-        let cents = document.createTextNode(virtualBarcode.substring(23,24));
-        let reference = document.createTextNode(virtualBarcode.substring(27,43));
+        let iban = document.createTextNode(virtualBarcode.substring(1,17));
+        let euros = document.createTextNode(virtualBarcode.substring(17,23) + ":" + virtualBarcode.substring(23,25));
+        let reference = document.createTextNode(virtualBarcode.substring(28,43));
         let due_date = document.createTextNode(virtualBarcode.substring(44,50));
         iban_area.appendChild(iban);
         amount_area.appendChild(euros);
