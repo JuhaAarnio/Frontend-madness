@@ -20,12 +20,17 @@
 </div>
 
 <div class="row">
-    <div id="info_area">
-        <h1>Payee's IBAN:<p id="payee"></p></h1>
-        <h1>Amount to be paid:<p id="amount"></p></h1>
-        <h1>Payment reference:<p id="payment_reference"></p></h1>
-        <h1>Due date:<p id="due_date"></p></h1>
+    <div id="info_area" class="col7">
+        <div id="row1">
+            <h1>Payee's IBAN:<p id="payee"></p></h1>
+            <h1>Amount to be paid:<p id="amount"></p></h1>
+        </div>
+        <div id="row2">
+            <h1>Payment reference:<p id="payment_reference"></p></h1>
+            <h1>Due date:<p id="due_date"></p></h1>
+        </div>
     </div>
+
     <div id="barcode_area">
         <svg id="barcode"></svg>
         <script>
@@ -36,6 +41,7 @@
             }
         </script>
     </div>
+
 </div>
 </body>
 </html>

@@ -11,55 +11,93 @@
 <p id="title">Exercise 1</p>
 
 <div class="row">
-    <div class="col10" id="banner"><h1>The banner</h1></div>
-</div>
-
-<div class="row">
-    <div class="col5">
-        <p id="text_area1">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            It has survived not only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
-    </div>
-    <div class="col5">
-        <p id="text_area2">
-            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-            The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here',
-            making it look like readable English.
-            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text,
-            and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years,
-            sometimes by accident, sometimes on purpose (injected humour and the like).
-        </p>
+    <div id="top_menu" class="col10">
+        <p class="topmenutext">File</p>
+        <p class="topmenutext">Edit</p>
+        <p class="topmenutext">View</p>
+        <p class="topmenutext">Help</p>
     </div>
 </div>
 
+
+
 <div class="row">
-    <div class="col10">
-        <img id="panoramic_image" src="../images/banner.jpg" alt="The three horsemen of defeat">
+    <div class="col2">
+        <div class="side_menu">
+            <p>Item 4</p>
+            <p>Item 4</p>
+            <p>Item 4</p>
+            <p>Item 4</p>
+        </div>
+    </div>
+    <div class="col8">
+        <div class="row">
+            <div class="col10" id="banner"><h1>The banner</h1></div>
+        </div>
+
+        <div class="row" id="textarea_mid">
+            <div class="col5">
+                <p id="text_area1">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    It has survived not only five centuries, but also the leap into electronic typesetting,
+                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
+                    and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+            </div>
+            <div class="col5">
+                <p id="text_area2">
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here',
+                    making it look like readable English.
+                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text,
+                    and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years,
+                    sometimes by accident, sometimes on purpose (injected humour and the like).
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col10">
+                <img id="panoramic_image" src="../images/banner.jpg" alt="The three horsemen of defeat">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col10">
+                <p id="text_area3">
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                    The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here',
+                    making it look like readable English.
+                    Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text,
+                    and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years,
+                    sometimes by accident, sometimes on purpose (injected humour and the like).
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 
 <div class="row">
-    <div id="div1" class="col4">
-        <img id="draggable_image" src="../images/joni.jpg"
-             draggable="true" alt="Joni Konnori standing in the rain"
-             width="256" height="128" ondragstart="drag(event)"></div>
+
     <div class="col3">
         <div id="drop_area" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     </div>
+
+    <div id="div1" class="col4">
+        <div id="image_area" ondrop="drop(event)", ondragover="allowDrop(event)">
+            <img id="draggable_image" src="../images/joni.jpg"
+                 draggable="true" alt="Joni Konnori standing in the rain"
+                 ondragstart="drag(event)">
+        </div>
+    </div>
+
     <div class="col3">
         <div id="drop_area2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     </div>
+
 </div>
 
-
-
-<p>LOREM IPSUM DOREISTUSLOREM IPSUM DOREISTUSLOREM IPSUM DOREISTUSLOREM
-    IPSUM DOREISTUSLOREM
-    IPSUM DOREISTUSLOREM IPSUM DOREISTUS</p>
 </body>
 </html>
