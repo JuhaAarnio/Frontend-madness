@@ -13,3 +13,22 @@ const map = new ol.Map({
         zoom: 11
     })
 });
+
+function getBuslines(){
+    let url = 'http://data.foli.fi/gtfs/v0/20191114-135003/routes';
+    let request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.onload = generateDropdown;
+    request.send();
+}
+
+function generateDropdown() {
+    if(this.status === 200){
+        let data = JSON.parse(this.response);
+        let lines = [];
+        let i;
+        for(i=0; i<data.length; i++){
+            lines[i] = data['route_long_name'][i];
+        }
+    }
+}
