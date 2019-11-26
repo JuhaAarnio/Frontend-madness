@@ -44,7 +44,6 @@ function showBuses() {
     let url = 'http://data.foli.fi/siri/vm';
     let request = new XMLHttpRequest();
     request.open('GET', url);
-    request.send();
     if(request.status === 200){
         let data = JSON.parse(request.response);
         let buses = [];
@@ -58,6 +57,7 @@ function showBuses() {
             }
         }
     }
+    request.send();
     console.log(request.status)
 }
 
