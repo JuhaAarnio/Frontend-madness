@@ -15,7 +15,7 @@ const map = new ol.Map({
 });
 
 function getBuslines(){
-    let url = 'http://data.foli.fi/gtfs/v0/20191114-135003/routes';
+    let url = 'http://data.foli.fi/gtfs/v0/routes';
     let request = new XMLHttpRequest();
     request.open('GET', url);
     request.onload = generateDropdown;
@@ -25,10 +25,45 @@ function getBuslines(){
 function generateDropdown() {
     if(this.status === 200){
         let data = JSON.parse(this.response);
-        let lines = [];
+        let routes = [];
         let i;
+        let dropdown = document.getElementById('route_list');
         for(i=0; i<data.length; i++){
-            lines[i] = data['route_long_name'][i];
+            routes[i] = data[i]["route_short_name"];
+        }
+        for(i=0; i<routes.length; i++){
+            let opt = document.createElement('option');
+            opt.text = routes[i];
+            opt.value = routes[i];
+            dropdown.options.add(opt);
         }
     }
 }
+
+function showBuses() {
+    let url = 'http://data.foli.fi/siri/vm';
+    let request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.send();
+    if(request.status === 200){
+        let data = JSON.parse(request.response);
+        let buses = [];
+        let selection = document.getElementById('route_list').options.value;
+        console.log(selection);
+        let i;
+        for(i=0; i<data.length; i++){
+            if(data[i]['route_short_name'] === selection){
+                buses[i] = data[i]['longitude']['latitude'];
+                console.log(buses[i]);
+            }
+        }
+    }
+    console.log(request.status)
+}
+
+function OnLoad() {
+    getBuslines();
+    document.getElementById('show_buses_button').onclick = showBuses;
+}
+
+window.onload = OnLoad;

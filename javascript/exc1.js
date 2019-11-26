@@ -9,7 +9,3 @@ function drop(ev) {
     let data = ev.dataTransfer.getData("text")
     ev.target.appendChild(document.getElementById(data))
 }
-/*function onLoad() {
-    document.getElementById('draggable_image').addEventListener("dragstart", drag(event))
-    document.getElementById('drop_area').addEventListener("ondrop", drop(event))
-}*/
