@@ -15,7 +15,7 @@ const map = new ol.Map({
 });
 
 function getBuslines(){
-    let url = 'http://data.foli.fi/gtfs/v0/routes';
+    let url = 'https://data.foli.fi/gtfs/v0/routes';
     let request = new XMLHttpRequest();
     request.open('GET', url);
     request.onload = generateDropdown;
@@ -41,7 +41,7 @@ function generateDropdown() {
 }
 
 function showBuses() {
-    let url = 'http://data.foli.fi/siri/vm';
+    let url = 'https://data.foli.fi/siri/vm';
     let request = new XMLHttpRequest();
     request.open('GET', url);
     if(request.status === 200){
@@ -59,6 +59,10 @@ function showBuses() {
     }
     request.send();
     console.log(request.status)
+}
+
+function loadBuses() {
+
 }
 
 function OnLoad() {
