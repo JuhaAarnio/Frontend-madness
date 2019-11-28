@@ -8,20 +8,22 @@ function Decode() {
         let reference_area = document.getElementById('payment_reference');
         let date_area = document.getElementById('due_date');
         let iban, euros, reference, due_date;
+        iban = document.createTextNode(virtualBarcode.substring(1,17));
+        euros = document.createTextNode(virtualBarcode.substring(17,23).replace(/^0+/,'') +
+                                        "," + virtualBarcode.substring(23,25) + " €");
+        due_date = document.createTextNode(virtualBarcode.substring(52,54) + "." + virtualBarcode.substring(50,52) +
+            "." + "20" + virtualBarcode.substring(48,50));
         if (version==="4"){
-            iban = document.createTextNode(virtualBarcode.substring(1,17));
-            euros = document.createTextNode(virtualBarcode.substring(17,23) + "," + virtualBarcode.substring(23,25));
-            reference = document.createTextNode(virtualBarcode.substring(26,45));
-            due_date = document.createTextNode(virtualBarcode.substring(45,51));
+            reference = document.createTextNode(virtualBarcode.substring(29,48).replace(/^0+/,''));
         }
         if (version==="5") {
-            iban = document.createTextNode(virtualBarcode.substring(1, 17));
-            euros = document.createTextNode(virtualBarcode.substring(17, 23) + "," + virtualBarcode.substring(23, 25));
-            reference = document.createTextNode(virtualBarcode.substring(25, 48));
-            due_date = document.createTextNode(virtualBarcode.substring(48, 54));
+            reference = document.createTextNode(virtualBarcode.substring(25, 48).replace(/^0+/,''));
         }
         else{
             console.log("Erraneous version");
+        }
+        if (virtualBarcode.substring(50,52) === "00" || virtualBarcode.substring(52,54) === "00"){
+            due_date = document.createTextNode("Not set");
         }
         iban_area.appendChild(iban);
         amount_area.appendChild(euros);
@@ -29,10 +31,10 @@ function Decode() {
         date_area.appendChild(due_date);
     }
     else if (isValid === false) {
-        console.log("Invalid characters in barcode!")
+        alert("Invalid characters in barcode!")
     }
     else if (virtualBarcode.length !== 54){
-        console.log("Invalid barcode")
+        alert("Invalid barcode")
     }
 }
 
@@ -63,8 +65,22 @@ function Show() {
     hide_button.setAttribute('value', "Hide")
 }
 
+function changeColorFocus(color){
+    let input_field = document.getElementById('virtual_barcode');
+    input_field.style.backgroundColor = "gray";
+    console.log("focused");
+}
+
+function changeColorUnfocus() {
+    let input_field = document.getElementById('virtual_barcode');
+    input_field.style.backgroundColor = "";
+    console.log("focused");
+}
+
 function OnLoad() {
     document.getElementById('hide_button').onclick = Hide;
-    document.getElementById('decode_button').onclick = Decode;
+    document.getElementById('decode_button').addEventListener("click", Decode);
+    document.getElementById('virtual_barcode').addEventListener("focus", changeColorFocus);
+    document.getElementById('virtual_barcode').addEventListener("blur", changeColorUnfocus);
 }
 window.onload = OnLoad;

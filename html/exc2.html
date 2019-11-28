@@ -9,6 +9,7 @@
     <title>Exercise 2</title>
 </head>
 <body>
+
 <div class="row">
     <div class="col10">
         <form id="barcode_form">
@@ -20,27 +21,41 @@
 </div>
 
 <div class="row">
-    <div id="info_area" class="col7">
-        <div id="row1">
-            <h1>Payee's IBAN:<p id="payee"></p></h1>
-            <h1>Amount to be paid:<p id="amount"></p></h1>
+    <div id="info_area" class="col10">
+
+        <div id="column1">
+            <h1 id="column1_amount">Amount to be paid:<p id="amount"></p></h1>
+            <h1 id="column1_due_date">Due date:<p id="due_date"></p></h1>
         </div>
-        <div id="row2">
-            <h1>Payment reference:<p id="payment_reference"></p></h1>
-            <h1>Due date:<p id="due_date"></p></h1>
+
+        <div id="column2">
+            <h1 id="column2_payee">Payee's IBAN:<p id="payee"></p></h1>
+            <h1 id="column2_payment_reference">Payment reference:<p id="payment_reference"></p></h1>
         </div>
+
+        <div id="barcode_area">
+            <svg id="barcode"></svg>
+            <script>
+                function drawBarcode() {
+                    console.log("Method called");
+                    let virtualBarcode = document.getElementById("virtual_barcode").value;
+                    let isValid = checkBarcode(virtualBarcode)
+                    if(virtualBarcode.length !== 54){
+                        alert("Incorrect barcode format!")
+                    }
+                    if(isValid === false){
+                        alert("Invalid characters in barcode!")
+                    }
+                    else{
+                        JsBarcode("#barcode", virtualBarcode);
+                    }
+                }
+            </script>
+        </div>
+
     </div>
 
-    <div id="barcode_area">
-        <svg id="barcode"></svg>
-        <script>
-            function drawBarcode() {
-                console.log("Method called");
-                let virtualBarcode = document.getElementById("virtual_barcode").value;
-                JsBarcode("#barcode", virtualBarcode);
-            }
-        </script>
-    </div>
+
 
 </div>
 </body>
