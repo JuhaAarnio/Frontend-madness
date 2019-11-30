@@ -7,7 +7,7 @@ const map = new ol.Map({
         new ol.layer.Tile({
             source: new ol.source.OSM()
         }),
-        new ol.layer.Vector({
+        mark_layer = new ol.layer.Vector({
             source: new ol.source.Vector(),
             style: new ol.style.Style({
                 image: new ol.style.Icon({
@@ -149,23 +149,29 @@ function fetchTrip() {
         )
         }
         console.log("coords: " + coordinates);
-        let ls_layer = new ol.layer.Vector({
-            source: new ol.source.Vector(),
-            style: new ol.style.Style({
-                stroke: new ol.style.Stroke({
-                    color: '#8d0000',
-                    width: 5
+        let ls_layer;
+        removeLayer();
+        function removeLayer(){
+            if(ls_layer){
+                map.removeLayer(ls_layer);
+                console.log("Removing layer");
+            }
+            ls_layer = new ol.layer.Vector({
+                source: new ol.source.Vector(),
+                style: new ol.style.Style({
+                    stroke: new ol.style.Stroke({
+                        color: '#8d0000',
+                        width: 5
+                    })
                 })
-            })
-        });
-        map.addLayer(ls_layer);
-        let source = map.getLayers()['array_'][2].getSource();
-        source.addFeature(
-            new ol.Feature(
-                new ol.geom.LineString(coordinates)
+            });
+            map.addLayer(ls_layer);
+            ls_layer.getSource().addFeature(
+                new ol.Feature(
+                    new ol.geom.LineString(coordinates)
+                )
             )
-        )
-
+        }
 
     }
 }
