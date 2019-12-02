@@ -68,6 +68,7 @@ function drawBusMarkers() {
         let buses = [];
         let selection_menu = document.getElementById('route_list');
         let selection = selection_menu.options[selection_menu.selectedIndex].value;
+        console.log(data['result']['vehicles']["1"]);
         console.log("selection:" + selection);
         let i;
         for(i=0; i<data.length; i++){
@@ -89,7 +90,6 @@ function drawBusMarkers() {
                 )
             )
         }
-
     }
     else{
         console.log("parse failed")
@@ -112,13 +112,15 @@ function fetchTrip() {
         console.log("selection: " + selection);
         let route_id;
         let i;
+        // Get the route ID of the selected busline
         for(i=0; i<data.length; i++){
             if(data[i]['route_short_name'] === selection){
                 route_id = data[i]['route_id']
             }
         }
         console.log(route_id);
-        let url = 'https://data.foli.fi/gtfs/v0/20191128-102321/trips/route/' + route_id;
+        // Append the route ID to the end of the trips-url to get the correct trip ID
+        let url = 'https://data.foli.fi/gtfs/v0/trips/route/' + route_id;
         console.log("trip url: " + url);
         let request = new XMLHttpRequest();
         let trip_id;
@@ -132,8 +134,8 @@ function fetchTrip() {
         else{
             console.log("Fetching trips failed");
         }
-
-        let shape_url = 'http://data.foli.fi/gtfs/v0/20191128-102321/shapes/' + trip_id;
+        // Append the trip ID to the shape-url to get coordinates.
+        let shape_url = 'http://data.foli.fi/gtfs/v0/shapes/' + trip_id;
         console.log("shape url: " + shape_url);
         let shape_request = new XMLHttpRequest();
         shape_request.open('GET', shape_url, false);
@@ -151,11 +153,14 @@ function fetchTrip() {
         console.log("coords: " + coordinates);
         let ls_layer;
         removeLayer();
+        // The plan here was to check if the ls_layer already exists.
+        // If it does, delete it and create a new layer with the linestring and add it to the map.
         function removeLayer(){
             if(ls_layer){
                 map.removeLayer(ls_layer);
                 console.log("Removing layer");
             }
+            // Create a new layer for the linestring.
             ls_layer = new ol.layer.Vector({
                 source: new ol.source.Vector(),
                 style: new ol.style.Style({

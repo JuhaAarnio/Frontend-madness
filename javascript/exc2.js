@@ -38,6 +38,8 @@ function Decode() {
     }
 }
 
+// This function checks that each character of the barcode is a number.
+// If not, it returns False.
 function checkBarcode(virtualBarcode) {
     let i;
     let reg = new RegExp('^[0-9]+$');
@@ -65,7 +67,7 @@ function Show() {
     hide_button.setAttribute('value', "Hide")
 }
 
-function changeColorFocus(color){
+function changeColorFocus(){
     let input_field = document.getElementById('virtual_barcode');
     input_field.style.backgroundColor = "gray";
     console.log("focused");
