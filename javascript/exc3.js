@@ -135,7 +135,7 @@ function fetchTrip() {
             console.log("Fetching trips failed");
         }
         // Append the trip ID to the shape-url to get coordinates.
-        let shape_url = 'http://data.foli.fi/gtfs/v0/shapes/' + trip_id;
+        let shape_url = 'https://data.foli.fi/gtfs/v0/shapes/' + trip_id;
         console.log("shape url: " + shape_url);
         let shape_request = new XMLHttpRequest();
         shape_request.open('GET', shape_url, false);
